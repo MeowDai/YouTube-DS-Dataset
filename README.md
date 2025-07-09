@@ -28,10 +28,6 @@ Resources and outputs for textbook-based SQL subtopic classification:
 
 Associated Colab notebooks:
 
-- `prompt_integration.ipynb`:  
-  [Colab Link](https://colab.research.google.com/drive/17t-URq0vzV0T3nn5cMtzmeCPhecEWJCy?usp=sharing)  
-  Combines each video’s textual information with a prompt template for LLM-based classification input.
+- `prompt_integration.ipynb` ([Colab Link](https://colab.research.google.com/drive/17t-URq0vzV0T3nn5cMtzmeCPhecEWJCy?usp=sharing)): Combines each video’s textual information with a prompt template for LLM-based classification input.
 
-- `classification_Qwen3-8B.ipynb`:  
-  [Colab Link](https://colab.research.google.com/drive/1cgV7WK8w4nRAJX6wmGTC4_ZC5IzmQe0T?usp=sharing)  
-  Uses Qwen3-8B to classify SQL videos into textbook-derived subtopics using the generated prompts.
+- `classification_Qwen3-8B.ipynb` ([Colab Link](https://colab.research.google.com/drive/1cgV7WK8w4nRAJX6wmGTC4_ZC5IzmQe0T?usp=sharing)): Uses Qwen3-8B to classify SQL videos into textbook-derived subtopics using the generated prompts.
