@@ -13,7 +13,7 @@ This folder includes all scripts for collecting data from YouTube using the YouT
 - `scrape_transcripts.py`: Fetches available English transcripts for each video.
 - `supplement_transcripts.py`: Attempts to retrieve translated English transcripts for non-English videos using YouTube’s caption translation functionality.
 
-All data is stored in a structured **SQLite database**, which is publicly available via [OSF](https://doi.org/10.17605/OSF.IO/FTN2S).
+All data is stored in a structured **SQLite database**, which is available via [OSF](https://doi.org/10.17605/OSF.IO/FTN2S).
 ### `filtering/`
 Scripts related to dataset relevance filtering:
 
