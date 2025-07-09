@@ -1,0 +1,242 @@
+[
+    {
+        "id": "sample_001",
+        "passage": "In addition to simply retrieving data, we often want to perform some computation or summarization. As we noted earlier in this chapter, SQL allows the use of arithmetic expressions. We now consider a powerful class of constructs for computing aggregate values such as MIN and SUM. These features represent a significant extension of relational algebra. SQL supports five aggregate operations, which can be applied on any column, say A, of a relation: 1. COUNT ([DISTINCT] A): The number of (unique) values in the A column. 2. SUM ([DISTINCT] A): The sum of all (unique) values in the A column. 3. AVG ([DISTINCT] A): The average of all (unique) values in the A column. 4. MAX (A): The maximum value in the A column. 5. MIN (A): The minimum value in the A column.",
+        "index_terms": ["Aggregation", "AVG", "COUNT", "MAX", "MIN", "SUM"],
+        "ground_truth": ["Aggregate Functions"],
+        "qwen3_prediction": ["Aggregate Functions"],
+        "llama3_prediction": ["Aggregate Functions"]
+    },
+    {
+        "id": "sample_002",
+        "passage": "Many queries reference only a small proportion of the records in a file. For example, a query like “Find all instructors in the Physics department” or “Find the salary value of the instructor with ID 22201” references only a fraction of the instructor records. It is inefficient for the system to read every record and to check ID field for the ID “32556,” or the building field for the value “Physics”. An index on an attribute of a relation is a data structure that allows the database system to find those tuples in the relation that have a specified value for that attribute efficiently, without scanning through all the tuples of the relation. For example, if we create an index on attribute dept_name of relation instructor, the database system can find the record with any specified dept_name value, such as “Physics”, or “Music”, directly, without reading all the tuples of the instructor relation. An index can also be created on a list of attributes, for example, on attributes name and dept_name of instructor. Indices are not required for correctness, since they are redundant data structures. Indices form part of the physical schema of the database, as opposed to its logical schema. However, indices are important for efficient processing of transactions, including both update transactions and queries. Indices are also important for efficient enforcement of integrity constraints such as primary-key and foreign-key constraints. In principle, a database system can decide automatically what indices to create. However, because of the space cost of indices, as well as the effect of indices on update processing, it is not easy to automatically make the right choices about what indices to maintain. Therefore, most SQL implementations provide the programmer with control over the creation and removal of indices via data-definition-language commands. We illustrate the syntax of these commands next. Although the syntax that we show is widely used and supported by many database systems, it is not part of the SQL standard. The SQL standard does not support control of the physical database schema; it restricts itself to the logical database schema. We create an index with the create index command, which takes the form: create index <index-name> on <relation-name> (<attribute-list>);",
+        "index_terms": ["create index"],
+        "ground_truth": ["Index"],
+        "qwen3_prediction": ["Index"],
+        "llama3_prediction": ["Index"]
+    },
+    {
+        "id": "sample_003",
+        "passage": "We may ask that the tuples produced by a query be presented in sorted order. The order may be based on the value of any attribute, with ties broken by the value of a second attribute, remaining ties broken by a third, and so on, as in the τ operation of Section 5.2.6. To get output in sorted order, we may add to the select-from-where statement a clause: ORDER BY <list of attributes> The order is by default ascending, but we can get the output highest-first by appending the keyword DESC (for “descending”) to an attribute. Similarly, we can specify ascending order with the keyword ASC, but that word is unnecessary. The ORDER BY clause follows the WHERE clause and any other clauses (i.e., the optional GROUP BY and HAVING clauses, which are introduced in Section 6.4). The ordering is performed on the result of the FROM, WHERE, and other clauses, just before we apply the SELECT clause. The tuples of this result are then sorted by the attributes in the list of the ORDER BY clause, and then passed to the SELECT clause for processing in the normal manner.",
+        "index_terms": ["ORDER BY"],
+        "ground_truth": ["Ordering & Limits"],
+        "qwen3_prediction": ["Ordering & Limits"],
+        "llama3_prediction": ["Ordering & Limits", "Expressions & Syntax"]
+    },
+    {
+        "id": "sample_004",
+        "passage": "Consider a query to find the set of all courses taught in the Fall 2017 semester, the Spring 2018 semester, or both. The information is contained in the section relation (Figure 2.6). To find the set of all courses taught in the Fall 2017 semester, we write:\n\nΠ_course_id (σ_semester = \"Fall\" ∧ year = 2017 (section))\n\nTo find the set of all courses taught in the Spring 2018 semester, we write:\n\nΠ_course_id (σ_semester = \"Spring\" ∧ year = 2018 (section))\n\nTo answer the query, we need the union of these two sets; that is, we need all course ids that appear in either or both of the two relations. We find these data by the binary operation union, denoted, as in set theory, by ∪. So the expression needed is:\n\nΠ_course_id (σ_semester = \"Fall\" ∧ year = 2017 (section)) ∪\nΠ_course_id (σ_semester = \"Spring\" ∧ year = 2018 (section))\n\nThe result relation for this query appears in Figure 2.14. Notice that there are eight tuples in the result, even though there are three distinct courses offered in the Fall 2017 semester and six distinct courses offered in the Spring 2018 semester. Since relations are sets, duplicate values such as CS-101, which is offered in both semesters, are replaced by a single occurrence.\n\nObserve that, in our example, we took the union of two sets, both of which consisted of course_id values. In general, for a union operation to make sense:\n\n1. We must ensure that the input relations to the union operation have the same number of attributes; the number of attributes of a relation is referred to as its arity.\n\n2. When the attributes have associated types, the types of the i-th attributes of both input relations must be the same, for each i.",
+        "index_terms": ["Arity", "Set Operations", "Union", "union of sets", "tuples", "relational model", "relational algebra"],
+        "ground_truth": ["Set Operations"],
+        "qwen3_prediction": ["Set Operations"],
+        "llama3_prediction": ["Queries & Paradigms", "Relational Model & Algebra", "Set Operations"]
+    }, 
+    {
+        "id": "sample_005",
+        "passage": "The example in Figure 5.20 illustrates another point about trigger execution: A user must be able to specify whether a trigger is to be executed once per modified record or once per activating statement. If the action depends on individual changed records, for example, we have to examine the age field of the inserted Students record to decide whether to increment the count, the triggering event should be defined to occur for each modified record; the FOR EACH ROW clause is used to do this. Such a trigger is called a row-level trigger. On the other hand, the init_count trigger is executed just once per INSERT statement, regardless of the number of records inserted, because we have omitted the FOR EACH ROW phrase. Such a trigger is called a statement-level trigger.",
+        "index_terms": ["Statement-level triggers", "Row-level triggers", "Triggers"],
+        "ground_truth": ["Triggers", "Row-Level Security"],
+        "qwen3_prediction": ["Triggers"],
+        "llama3_prediction": ["Trigger Types", "Row-Level Triggers", "Statement-Level Triggers"]
+    },
+    {
+        "id": "sample_006",
+        "passage": "The SQL standard defines embeddings of SQL in a variety of programming languages, such as C, C++, Cobol, Pascal, Java, PL/I, and Fortran. A language in which SQL queries are embedded is referred to as a host language, and the SQL structures permitted in the host language constitute embedded SQL.\n\nPrograms written in the host language can use the embedded SQL syntax to access and update data stored in a database. An embedded SQL program must be processed by a special preprocessor prior to compilation. The preprocessor replaces embedded SQL requests with host-language declarations and procedure calls that allow runtime execution of the database accesses. Then the resulting program is compiled by the host-language compiler. This is the main distinction between embedded SQL and JDBC or ODBC.",
+        "index_terms": ["Java", "host language", "embedded SQL", "C", "C++"],
+        "ground_truth": ["Embedded & Dynamic SQL", "Programming Languages"],
+        "qwen3_prediction": ["Embedded & Dynamic SQL"],
+        "llama3_prediction": ["Embedded & Dynamic SQL", "Programming Languages"]
+    },
+    {
+        "id": "sample_007",
+        "passage": "For our first complex PSM statement type, let us consider the if-statement. The form is only a little strange; it differs from C or similar languages in that:\n\n1. The statement ends with keywords END IF.\n\n2. If-statements nested within the else-clause are introduced with the single word ELSEIF.\n\nThus, the general form of an if-statement is as suggested by Fig. 9.12. The condition is any boolean-valued expression, as can appear in the WHERE clause of SQL statements. Each statement list consists of statements ended by semicolons, but does not need a surrounding BEGIN...END. The final ELSE and its statement(s) are optional; i.e., IF...THEN...END IF alone or with ELSEIF's is acceptable.",
+        "index_terms": ["begin atomic...end", "Persistent Storage Module (PSM)", "if clauses", "'if-then-else statements'"],
+        "ground_truth": ["Procedures & PSM"],
+        "qwen3_prediction": ["Procedures & PSM"],
+        "llama3_prediction": ["Procedures & PSM"]
+    },
+    {
+        "id": "sample_008",
+        "passage": "The SQL rollup and cube constructs provide a concise way to get multiple such aggregates using a single query, instead of writing multiple queries.\n\nThe rollup construct is illustrated using the following query:\n\nselect item_name, color, sum(quantity)\nfrom sales\ngroup by rollup(item_name, color);\n\nThe result of the query is shown in Figure 5.19. The above query is equivalent to the following query using the union operation.\n\n(select item_name, color, sum(quantity) as quantity\nfrom sales\ngroup by item_name, color)\nunion\n(select item_name, null as color, sum(quantity) as quantity\nfrom sales\ngroup by item_name)\nunion\n(select null as item_name, null as color, sum(quantity) as quantity\nfrom sales)\n\nThe construct group by rollup(item_name, color) generates 3 groupings:\n{ (item_name, color), (item_name), () }",
+        "index_terms": ["group by clause", "rollup clause", "rollup construct", "Unique Constraints", "SUM", "UNION", "cube construct"],
+        "ground_truth": ["Group BY & Having"],
+        "qwen3_prediction": ["Group BY & Having"],
+        "llama3_prediction": ["Group BY & Having", "Set Operations", "Expressions & Syntax"]
+    },
+    {
+        "id": "sample_009",
+        "passage": "As an example of the ability of a nested subquery to compare sets, consider the query “Find the names of all instructors whose salary is greater than at least one instructor in the Biology department.” In Section 3.4.1, we wrote this query as follows:\n\nselect distinct T.name\nfrom instructor as T, instructor as S\nwhere T.salary > S.salary and S.dept_name = 'Biology';\n\nSQL does, however, offer an alternative style for writing the preceding query. The phrase “greater than at least one” is represented in SQL by > some. This construct allows us to rewrite the query in a form that resembles closely our formulation of the query in English.\n\nselect name\nfrom instructor\nwhere salary > some (select salary\n                     from instructor\n                     where dept_name = 'Biology');\n\nThe subquery:\n\n(select salary\n from instructor\n where dept_name = 'Biology')\n\ngenerates the set of all salary values of all instructors in the Biology department. The > some comparison in the where clause of the outer select is true if the salary value of the tuple is greater than at least one member of the set of all salary values for instructors in Biology.\n\nSQL also allows < some, <= some, >= some, = some, and <> some comparisons. As an exercise, verify that = some is identical to in, whereas <> some is not the same as not in.",
+        "index_terms": ["nested subqueries", "not in construct", "select distinct", "some construct"],
+        "ground_truth": ["Expressions & Syntax", "Subqueries"],
+        "qwen3_prediction": ["Set Operations", "Expressions & Syntax", "Subqueries"],
+        "llama3_prediction": ["Subqueries", "Queries & Paradigms", "Set & Assignment", "Logical Connectives"]
+    },
+    {
+        "id": "sample_010",
+        "passage": "SQL provides three set-manipulation constructs that extend the basic query form presented earlier. Since the answer to a query is a multiset of rows, it is natural to consider the use of operations such as union, intersection, and difference. SQL supports these operations under the names UNION, INTERSECT, and EXCEPT. SQL also provides other set operations: IN (to check if an element is in a given set), op ANY, op ALL (to compare a value with the elements in a given set, using comparison operator op), and EXISTS (to check if a set is empty). IN and EXISTS can be prefixed by NOT, with the obvious modification to their meaning. We cover UNION, INTERSECT, and EXCEPT in this section, and the other operations in Section 5.4.",
+        "index_terms": ["Difference operation", "Intersection", "Set operators", "Union"],
+        "ground_truth": ["Difference & EXCEPT", "Set Operations", "Expressions & Syntax"],
+        "qwen3_prediction": ["Set Operations"],
+        "llama3_prediction": ["Set Operations"]
+    },
+    {
+        "id": "sample_011",
+        "passage": "Instead of carrying out an action for each affected row, we can carry out a single action for the entire SQL statement that caused the insert, delete, or update. To do so, we use the for each statement clause instead of the for each row clause. The clauses referencing old table as or referencing new table as can then be used to refer to temporary tables (called transition tables) containing all the affected rows. Transition tables cannot be used with before triggers, but they can be used with after triggers, regardless of whether they are statement triggers or row triggers. A single SQL statement can then be used to carry out multiple actions on the basis of the transition tables.",
+        "index_terms": ["after triggers", "before triggers", "for each row clause", "for each statement clause", "referencing new table as clause", "referencing old tabele as clause", "triggers", "tables", "transition tables"],
+        "ground_truth": ["Triggers"],
+        "qwen3_prediction": ["Triggers"],
+        "llama3_prediction": ["Triggers", "Transactions & Isolation"]
+    },
+    {
+        "id": "sample_012",
+        "passage": "A database schema, along with primary key and foreign-key constraints, can be depicted by schema diagrams. Figure 2.9 shows the schema diagram for our university organization. Each relation appears as a box, with the relation name at the top in blue and the attributes listed inside the box.\n\nPrimary-key attributes are shown underlined. Foreign-key constraints appear as arrows from the foreign-key attributes of the referencing relation to the primary key of the referenced relation. We use a two-headed arrow, instead of a single-headed arrow, to indicate a referential integrity constraint that is not a foreign-key constraint. In Figure 2.9, the line with a two-headed arrow from time_slot_id in the section relation to time_slot_id in the time_slot relation represents the referential integrity constraint from section.time_slot_id to time_slot.time_slot_id.\n\nMany database systems provide design tools with a graphical user interface for creating schema diagrams. We shall discuss a different diagrammatic representation of schemas, called the entity-relationship diagram, at length in Chapter 6; although there are some similarities in appearance, these two notations are quite different, and should not be confused for one another.",
+        "index_terms": ["schema diagrams", "referencing relation", "referenced relation", "referential integrity", "primary keys", "foreign keys"],
+        "ground_truth": ["Referential Integrity", "Key Constraints", "Schema"],
+        "qwen3_prediction": ["Referential Integrity", "Key Constraints"],
+        "llama3_prediction": ["Database Systems", "Schema", "Relational Model & Algebra", "Key Constraints", "Integrity Constraints", "Referential Integrity"]
+    },
+    {
+        "id": "sample_013",
+        "passage": "A better alternative, which is part of the SQL:1999 standard is to allow multiple SQL statements to be enclosed between the keywords begin atomic … end. All the statements between the keywords then form a single transaction, which is committed by default if execution reaches the end statement. Only some databases, such as SQL Server, support the above syntax. However, several other databases, such as MySQL and PostgreSQL, support a begin statement which starts a transaction containing all subsequent SQL statements, but do not support the end statement; instead, the transaction must be ended by either a commit work or a rollback work command. If you use a database such as Oracle, where the automatic commit is not the default for DML statements, be sure to issue a commit command after adding or modifying data, or else when you disconnect, all your database modifications will be rolled back! You should be aware that although Oracle has automatic commit turned off by default, that default may be overridden by local configuration settings.",
+        "index_terms": ["begin atomic...end", "rollback", "rollback work"],
+        "ground_truth": ["Transactions & Isolation", "Procedures & PSM"],
+        "qwen3_prediction": ["Transactions & Isolation"],
+        "llama3_prediction": ["Transactions & Isolation", "Procedures & PSM", "SQL Standards & History"]
+    },
+    {
+        "id": "sample_014",
+        "passage": "Like dynamic SQL, embedded SQL provides a means by which a program can interact with a database server. However, under embedded SQL, the SQL statements are identified at compile time using a preprocessor, which translates requests expressed in embedded SQL into function calls. At runtime, these function calls connect to the database using an API that provides dynamic SQL facilities but may be specific to the database that is being used. Section 5.1.4 briefly covers embedded SQL.",
+        "index_terms": ["embedded SQL", "dynamic SQL"],
+        "ground_truth": ["Embedded & Dynamic SQL"],
+        "qwen3_prediction": ["Embedded & Dynamic SQL"],
+        "llama3_prediction": ["Embedded & Dynamic SQL"]
+    },
+    {
+        "id": "sample_015",
+        "passage": "The SQL standard includes the privileges select, insert, update, and delete. The privilege all privileges can be used as a short form for all the allowable privileges. A user who creates a new relation is given all privileges on that relation automatically. The SQL data-definition language includes commands to grant and revoke privileges. The grant statement is used to confer authorization. The basic form of this statement is:\n\n    grant <privilege list>\n    on <relation name or view name>\n    to <user/role list>;\n\nThe privilege list allows the granting of several privileges in one command. The notion of roles is covered in Section 4.7.2.\nThe select authorization on a relation is required to read tuples in the relation. The following grant statement grants database users Amit and Satoshi select authorization on the department relation:\n\n    grant select on department to Amit, Satoshi;",
+        "index_terms": ["privileges", "select authorization, privileges and"],
+        "ground_truth": ["Authorization & Privileges", "Select Variants"],
+        "qwen3_prediction": ["Authorization & Privileges"],
+        "llama3_prediction": ["Authorization & Privileges", "Data Definition Language (DDL)", "Privileges & Roles"]
+    },
+    {
+        "id": "sample_016",
+        "passage": "For string comparisons, we can use the comparison operators (=, <, >, etc.) with the ordering of strings determined alphabetically as usual. If we need to sort strings by an order other than alphabetical (e.g., sort strings denoting month names in the calendar order January, February, March, etc.), SQL supports a general concept of a collation, or sort order, for a character set. A collation allows the user to specify which characters are ‘less than’ which others and provides great flexibility in string manipulation.",
+        "index_terms": ["Collations in SQL"],
+        "ground_truth": ["String Functions"],
+        "qwen3_prediction": ["String Functions"],
+        "llama3_prediction": ["Expressions & Syntax", "String Functions"]
+    },
+    {
+        "id": "sample_017",
+        "passage": "As a result, most current systems use dynamic SQL, rather than embedded SQL. One exception is the Microsoft Language Integrated Query (LINQ) facility, which extends the host language to include support for queries instead of using a preprocessor to translate embedded SQL queries into the host language.",
+        "index_terms": ["Language Integrated Query (LINQ)", "embedded databases", "embedded SQL"],
+        "ground_truth": ["Language Integrated Query (LINQ)", "Embedded & Dynamic SQL"],
+        "qwen3_prediction": ["Embedded & Dynamic SQL"],
+        "llama3_prediction": ["Embedded & Dynamic SQL", "Language Integrated Query (LINQ)"]
+    },
+    {
+        "id": "sample_018",
+        "passage": "All the variations on the outerjoin that we mentioned in Section 5.2.7 are also available in SQL. If we want a left- or right-outerjoin, we add the appropriate word LEFT or RIGHT in place of FULL. For instance,\n\n    MovieStar NATURAL LEFT OUTER JOIN MovieExec;\n\nwould yield the first two tuples of Fig. 6.12 but not the third. Similarly,\n\n    MovieStar NATURAL RIGHT OUTER JOIN MovieExec;\n\nwould yield the first and third tuples of Fig. 6.12 but not the second.\nNext, suppose we want a theta-outerjoin instead of a natural outerjoin. Instead of using the keyword NATURAL, we may follow the join by ON and a condition that matching tuples must obey. If we also specify FULL OUTER JOIN, then after matching tuples from the two joined relations, we pad dangling tuples of either relation with NULL’s and include the padded tuples in the result.",
+        "index_terms": ["Left outerjoin", "Natural join", "Right outerjoin"],
+        "ground_truth": ["Join Operations"],
+        "qwen3_prediction": ["Join Operations"],
+        "llama3_prediction": ["Join Operations", "Logical Connectives", "Expressions & Syntax"]
+    },
+    {
+        "id": "sample_019",
+        "passage": "In some situations, there is a need to include historical data, as, for example, if we wish to store not only the current salary of each instructor but also entire salary histories. It is easy enough to do this by adding two attributes to the instructor relation schema indicating the starting date for a given salary value and another indicating the end date. Then, an instructor may have several salary values, each corresponding to a specific pair of start and end dates. Those start and end dates are called the valid time values for the corresponding salary value.\nObserve that there may now be more than one tuple in the instructor relation with the same value of ID. Issues in specifying primary key and foreign key constraints in the context of such temporal data are discussed in Section 7.10.\nFor a database system to support such temporal constructs, a first step is to provide syntax to specify that certain attributes define a valid time interval. We use Oracle 12’s syntax as an example. The SQL DDL for instructor is augmented using a period declaration as follows, to indicate that start_date and end_date attributes specify a valid-time interval.\n\n    create table instructor\n    ( …\n      start_date       date,\n      end_date         date,\n      period for valid_time (start_date, end_date),\n      … );\n\nOracle 12c also provides several DML extensions to ease querying with temporal data. The as of period for construct can then be used in query to fetch only those tuples whose valid time period includes a specific time. To find instructors and their salaries as of some time in the past, say January 20, 2014, we write:\n\n    select name, salary, start_date, end_date\n    from instructor as of period for valid_time '20-JAN-2014';\n\nIf we wish to find tuples whose period of validity includes all or part of a period of time, say, January 20, 2014 to January 30, 2014, we write:\n\n    select name, salary, start_date, end_date\n    from instructor versions period for valid_time between '20-JAN-2014' and '30-JAN-2014';\n\nOracle 12c also implements a feature that allows stored database procedures (covered in Chapter 5) to be run as of a specified time period.\nThe above constructs ease the specification of the queries, although the queries can be written without using the constructs.",
+        "index_terms": ["as of period for", "period declaration", "temporal validity", "valid time", "versions period for"],
+        "ground_truth": ["Temporal Concepts"],
+        "qwen3_prediction": ["Temporal Concepts"],
+        "llama3_prediction": ["Temporal Concepts", "Data Manipulation Language (DML)", "Database Systems", "Data Definition Language (DDL)", "SQL Standards & History"]
+    },
+    {
+        "id": "sample_020",
+        "passage": "A connection is opened using the getConnection() method of the DriverManager class (within java.sql). This method takes three parameters.\n\n1. The first parameter to the getConnection() call is a string that specifies the URL, or machine name, where the server runs (in our example, db.yale.edu), along with possibly some other information such as the protocol to be used to communicate with the database (in our example, jdbc:oracle:thin:; we shall shortly see why this is required), the port number the database system uses for communication (in our example, 2000), and the specific database on the server to be used (in our example, univdb). Note that JDBC specifies only the API, not the communication protocol. A JDBC driver may support multiple protocols, and we must specify one supported by both the database and the driver. The protocol details are vendor specific.\n\n2. The second parameter to getConnection() is a database user identifier, which is a string.\n\n3. The third parameter is a password, which is also a string. (Note that the need to specify a password within the JDBC code presents a security risk if an unauthorized person accesses your Java code.)",
+        "index_terms": ["DriverManager class", "getConnection method", "JDBC (Java Database Connectivity)", "Statement object"],
+        "ground_truth": ["Fetch/Result APIs"],
+        "qwen3_prediction": ["Fetch/Result APIs", "Embedded & Dynamic SQL"],
+        "llama3_prediction": ["Fetch/Result APIs", "Database Systems"]
+    },
+    {
+        "id": "sample_021",
+        "passage": "Window queries compute an aggregate function over ranges of tuples. This is useful, for example, to compute an aggregate of a fixed range of time; the time range is called a window. Windows may overlap, in which case a tuple may contribute to more than one window. This is unlike the partitions we saw earlier, where a tuple could contribute to only one partition.\n\nAn example of the use of windowing is trend analysis. Consider our earlier sales example. Sales may fluctuate widely from day to day based on factors like weather (e.g., a snowstorm, flood, hurricane, or earthquake might reduce sales for a period of time). However, over a sufficiently long period of time, fluctuations might be less (continuing the example, sales may “make up” for weather-related downturns). Stock-market trend analysis is another example of the use of the windowing concept. Various “moving averages” are found on business and investment web sites.\n\nIt is relatively easy to write an SQL query using those features we have already studied to compute an aggregate over one window, for example, sales over a fixed 3-day period. However, if we want to do this for every 3-day period, the query becomes cumbersome.",
+        "index_terms": ["windows and windowing"],
+        "ground_truth": ["Windowing & Pivoting"],
+        "qwen3_prediction": ["Windowing & Pivoting"],
+        "llama3_prediction": ["Windowing & Pivoting"]
+    },
+    {
+        "id": "sample_022",
+        "passage": "SQL includes a feature for testing whether a subquery has any tuples in its result. The exists construct returns the value true if the argument subquery is nonempty. Using the exists construct, we can write the query “Find all courses taught in both the Fall 2017 semester and in the Spring 2018 semester” in still another way:\n\n    select course_id\n    from section as S\n    where semester = 'Fall' and year = 2017 and\n          exists (select *\n                  from section as T\n                  where semester = 'Spring' and year = 2018 and\n                        S.course_id = T.course_id);\n\nThe above query also illustrates a feature of SQL where a correlation name from an outer query (S in the above query), can be used in a subquery in the where clause. A subquery that uses a correlation name from an outer query is called a correlated subquery.\n\nIn queries that contain subqueries, a scoping rule applies for correlation names. In a subquery, according to the rule, it is legal to use only correlation names defined in the subquery itself or in any query that contains the subquery. If a correlation name is defined both locally in a subquery and globally in a containing query, the local definition applies. This rule is analogous to the usual scoping rules used for variables in programming languages.",
+        "index_terms": ["correlated subqueries", "correlation name"],
+        "ground_truth": ["Aliases & Correlation", "Subqueries"],
+        "qwen3_prediction": ["Subqueries", "Correlated Subqueries", "Expressions & Syntax"],
+        "llama3_prediction": ["Expressions & Syntax", "Subqueries"]
+    },
+    {
+        "id": "sample_023",
+        "passage": "Table constraints are associated with a single table, although the conditional expression in the CHECK clause can refer to other tables. Table constraints are required to hold only if the associated table is nonempty. Thus, when a constraint involves two or more tables, the table constraint mechanism is sometimes cumbersome and not quite what is desired. To cover such situations, SQL supports the creation of assertions, which are constraints not associated with any one table.\n\nAs an example, suppose that we wish to enforce the constraint that the number of boats plus the number of sailors should be less than 100. (This condition might be required, say, to qualify as a ‘small’ sailing club.) We could try the following table constraint:\n\n    CREATE TABLE Sailors ( sid INTEGER,\n                           sname CHAR(10),\n                           rating INTEGER,\n                           age REAL,\n                           PRIMARY KEY (sid),\n                           CHECK ( rating >= 1 AND rating <= 10 ),\n                           CHECK (( SELECT COUNT (S.sid) FROM Sailors S )\n                                 + ( SELECT COUNT (B.bid) FROM Boats B )\n                                 < 100 ))\n\nThis solution suffers from two drawbacks. It is associated with Sailors, although it involves Boats in a completely symmetric way. More important, if the Sailors table is empty, this constraint is defined (as per the semantics of table constraints) to always hold, even if we have more than 100 rows in Boats! We could extend this constraint specification to check that Sailors is nonempty, but this approach becomes cumbersome. The best solution is to create an assertion, as follows:\n\n    CREATE ASSERTION smallClub\n    CHECK (( SELECT COUNT (S.sid) FROM Sailors S )\n          + ( SELECT COUNT (B.bid) FROM Boats B )\n          < 100 )",
+        "index_terms": ["Assertions in SQL"],
+        "ground_truth": ["Domain & Check Constraints"],
+        "qwen3_prediction": ["Domain & Check Constraints", "Integrity Constraints"],
+        "llama3_prediction": ["Assertions in SQL", "Domain & Check Constraints", "Integrity Constraints", "Relational Model & Algebra"]
+    },
+    {
+        "id": "sample_024",
+        "passage": "As we will see in Section 5.2, SQL supports the creation of functions and procedures, which may, in turn, contain queries and updates. The execute privilege can be granted on a function or procedure, enabling a user to execute the function or procedure. By default, just like views, functions and procedures have all the privileges that the creator of the function or procedure had. In effect, the function or procedure runs as if it were invoked by the user who created the function.\n\nAlthough this behavior is appropriate in many situations, it is not always appropriate. Starting with SQL:2003, if the function definition has an extra clause sql security invoker, then it is executed under the privileges of the user who invokes the function, rather than the privileges of the definer of the function. This allows the creation of libraries of functions that can run under the same authorization as the invoker.",
+        "index_terms": ["execute privilege", "privileges"],
+        "ground_truth": ["Authorization & Privileges"],
+        "qwen3_prediction": ["Authorization & Privileges"],
+        "llama3_prediction": ["Procedures & PSM", "Authorization & Privileges", "SQL Standards & History"]
+    },
+    {
+        "id": "sample_025",
+        "passage": "Transactions may consist of several steps, and integrity constraints may be violated temporarily after one step, but a later step may remove the violation. For instance, suppose we have a relation person with primary key name, and an attribute spouse, and suppose that spouse is a foreign key on person. That is, the constraint says that the spouse attribute must contain a name that is present in the person table. Suppose we wish to note the fact that John and Mary are married to each other by inserting two tuples, one for John and one for Mary, in the preceding relation, with the spouse attributes set to Mary and John, respectively. The insertion of the first tuple would violate the foreign-key constraint, regardless of which of the two tuples is inserted first. After the second tuple is inserted, the foreign-key constraint would hold again.\n\nTo handle such situations, the SQL standard allows a clause initially deferred to be added to a constraint specification; the constraint would then be checked at the end of a transaction and not at intermediate steps. A constraint can alternatively be specified as deferrable, which means it is checked immediately by default but can be deferred when desired. For constraints declared as deferrable, executing a statement set constraints constraint-list deferred as part of a transaction causes the checking of the specified constraints to be deferred to the end of that transaction. Constraints that are to appear in a constraint list must have names assigned. The default behavior is to check constraints immediately, and many database implementations do not support deferred constraint checking.\n\nWe can work around the problem in the preceding example in another way, if the spouse attribute can be set to null: We set the spouse attributes to null when inserting the tuples for John and Mary, and we update them later. However, this technique requires more programming effort, and it does not work if the attributes cannot be set to null.",
+        "index_terms": ["deferred integrity constraints", "initially deferred integrity constraints", "referential integrity"],
+        "ground_truth": ["Integrity Constraints", "Referential Integrity"],
+        "qwen3_prediction": ["Referential Integrity", "Integrity Constraints", "Transactions & Isolation"],
+        "llama3_prediction": ["Domain & Check Constraints", "Integrity Constraints", "Transactions & Isolation"]
+    },
+    {
+        "id": "sample_026",
+        "passage": "We use the not in construct in a way similar to the in construct. For example, to find all the courses taught in the Fall 2017 semester but not in the Spring 2018 semester, which we expressed earlier using the except operation, we can write:\n\n    select distinct course_id\n    from section\n    where semester = 'Fall' and year = 2017 and\n          course_id not in (select course_id\n                            from section\n                            where semester = 'Spring' and year = 2018);\n\nThe in and not in operators can also be used on enumerated sets. The following query selects the names of instructors whose names are neither “Mozart” nor “Einstein”.\n\n    select distinct name\n    from instructor\n    where name not in ('Mozart', 'Einstein');",
+        "index_terms": ["in construct", "not in construct"],
+        "ground_truth": ["Expressions & Syntax", "Subqueries"],
+        "qwen3_prediction": [ "Expressions & Syntax", "Logical Connectives", "Set Operations"],
+        "llama3_prediction": ["Expressions & Syntax", "Set Operations", "Logical Connectives", "Domain & Check Constraints"]
+    },
+    {
+        "id": "sample_027",
+        "passage": "What if the pattern we wish to use in a LIKE expression involves the characters % or _? Instead of having a particular character used as the escape character (e.g., the backslash in most UNIX commands), SQL allows us to specify any one character we like as the escape character for a single pattern. We do so by following the pattern by the keyword ESCAPE and the chosen escape character, in quotes. A character % or _ preceded by the escape character in the pattern is interpreted literally as that character, not as a symbol for any sequence of characters or any one character, respectively. For example,\n\n    s LIKE 'x%/x%' ESCAPE 'x'\n\nmakes x the escape character in the pattern x%/x%. The sequence x% is taken to be a single %. This pattern matches any string that begins and ends with the character %. Note that only the middle % has its “any string” interpretation.",
+        "index_terms": ["Escape character"],
+        "ground_truth": ["String Functions"],
+        "qwen3_prediction": ["String Functions"],
+        "llama3_prediction": ["Expressions & Syntax", "String Functions"]
+    },
+    {
+        "id": "sample_028",
+        "passage": "We define a view in SQL by using the create view command. To define a view, we must give the view a name and must state the query that computes the view. The form of the create view command is:\n\n    create view v as <query expression>;\n\nwhere <query expression> is any legal query expression. The view name is represented by v.\n\nConsider again the clerk who needs to access all data in the instructor relation, except salary. The clerk should not be authorized to access the instructor relation (we see in Section 4.7, how authorizations can be specified). Instead, a view relation faculty can be made available to the clerk, with the view defined as follows:\n\n    create view faculty as\n        select ID, name, dept_name\n        from instructor;",
+        "index_terms": ["create view", "views"],
+        "ground_truth": ["View"],
+        "qwen3_prediction": ["View"],
+        "llama3_prediction": ["Views"]
+    },
+    {
+        "id": "sample_029",
+        "passage": "In general, a cross-tab is a table derived from a relation (say, R), where values for some attribute of relation R (say, A) become attribute names in the result; the attribute A is the pivot attribute. Cross-tabs are widely used for data analysis, and are discussed in more detail in Section 11.3.\n\nSeveral SQL implementations, such as Microsoft SQL Server, and Oracle, support a pivot clause that allows creation of cross-tabs. Given the sales relation from Figure 5.17, the query:\n\n    select *\n    from sales\n    pivot (\n        sum(quantity)\n        for color in ('dark', 'pastel', 'white')\n    )\n\nreturns the result shown in Figure 5.18.\n\nNote that the for clause within the pivot clause specifies (i) a pivot attribute (color, in the above query), (ii) the values of that attribute that should appear as attribute names in the pivot result (dark, pastel and white, in the above query), and (iii) the aggregate function that should be used to compute the value of the new attributes (aggregate function sum, on the attribute quantity, in the above query).\n\nThe attribute color and quantity do not appear in the result, but all other attributes are retained. In case more than one tuple contributes values to a given cell, the aggregate operation within the pivot clause specifies how the values should be combined. In the above example, the quantity values are aggregated using the sum function.\n\nA query using pivot can be written using basic SQL constructs, without using the pivot construct, but the construct simplifies the task of writing such queries.",
+        "index_terms": ["pivot clause", "pivot attribute", "pivoting", "pivot-table"],
+        "ground_truth": ["Windowing & Pivoting"],
+        "qwen3_prediction": ["Windowing & Pivoting"],
+        "llama3_prediction": ["Expressions & Syntax", "Join Operations", "Set Operations", "Windowing & Pivoting"]
+    },
+    {
+        "id": "sample_030",
+        "passage": "One way to write the preceding query is to use iteration: First find those courses that are a direct prerequisite of CS-347, then those courses that are a prerequisite of all the courses under the first set, and so on. This iterative process continues until we reach an iteration where no courses are added. Figure 5.14 shows a function findAllPrereqs(cid) to carry out this task; the function takes the course_id of the course as a parameter (cid), computes the set of all direct and indirect prerequisites of that course, and returns the set.\n\nThe procedure uses three temporary tables:\n\n• c_prereq: stores the set of tuples to be returned.\n• new_c_prereq: stores the courses found in the previous iteration.\n• temp: used as temporary storage while sets of courses are manipulated.\n\nNote that SQL allows the creation of temporary tables using the command create temporary table; such tables are available only within the transaction executing the query and are dropped when the transaction finishes. Moreover, if two instances of findAllPrereqs run concurrently, each gets its own copy of the temporary tables; if they shared a copy, their result could be incorrect.",
+        "index_terms": ["unique construct", "unique construct", "nested subqueries"],
+        "ground_truth": ["Key Constraints", "Subqueries"],
+        "qwen3_prediction": ["Duplicate Handling"],
+        "llama3_prediction": ["Domain & Check Constraints", "Subqueries", "Set Operations"]
+    }
+]
