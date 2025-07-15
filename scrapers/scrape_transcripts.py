@@ -9,9 +9,9 @@ from youtube_transcript_api import YouTubeTranscriptApi
 from youtube_transcript_api._errors import TranscriptsDisabled, NoTranscriptFound, VideoUnavailable
 
 # Database file paths
-DATABASE_FILE = 'ds_edu_videos.db'
-STATE_FILE = 'transcript_scraper_state.json'
-LOG_FILE = 'transcript_scraper.log'
+DATABASE_FILE = 'ds_edu_videos.db' # SQLite database file to store results
+STATE_FILE = 'transcript_scraper_state.json' # File to store the state of the transcript scraper
+LOG_FILE = 'transcript_scraper.log' # Log file for transcript scraping
 # Define max retry count
 MAX_RETRIES = 3
 

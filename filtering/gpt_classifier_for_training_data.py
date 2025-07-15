@@ -7,7 +7,7 @@ import time
 
 # Set your OpenAI API Key
 client = OpenAI(
-    api_key=os.environ.get("OPENAI_API_KEY"),  # This is the default and can be omitted
+    api_key=os.environ.get("OPENAI_API_KEY"), # Ensure you set this environment variable
 )
 # Database connection
 db_path = "youtube_video_data.db"  # Replace with the actual path to your SQLite database

@@ -5,8 +5,9 @@ import time
 import random
 
 # Connect to database
-db_path = "ds_edu_videos.db"
-logging.basicConfig(filename="transcript_update.log", level=logging.INFO)
+db_path = "ds_edu_videos.db" 
+# Configure logging
+logging.basicConfig(filename="transcript_update.log", level=logging.INFO) 
 
 while True:
     try:

@@ -10,8 +10,9 @@ from googleapiclient.errors import HttpError
 import socket
 
 # Configure logging
-LOG_FILE = 'comments_scraper.log'
-STATE_FILE = 'comments_scraper_state.json'
+LOG_FILE = 'comments_scraper.log' # Log file for comments scraping
+STATE_FILE = 'comments_scraper_state.json' # File to store the state of the comments scraper
+# Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', handlers=[
     logging.FileHandler(LOG_FILE),
     logging.StreamHandler()

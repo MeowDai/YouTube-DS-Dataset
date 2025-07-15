@@ -7,10 +7,10 @@ import pandas as pd
 from datetime import datetime
 from isodate import parse_duration
 
-STATE_FILE = 'scraper_state.json'
-KEYWORDS_FILE = 'search_keywords.json'
-DATABASE_FILE = 'ds_edu_videos.db'
-API_KEYS_FILE = 'api_keys.json'
+STATE_FILE = 'scraper_state.json' # File to store the state of the scraper
+KEYWORDS_FILE = 'search_keywords.json' # File containing search keywords
+DATABASE_FILE = 'ds_edu_videos.db' # SQLite database file to store results
+API_KEYS_FILE = 'api_keys.json' # File containing YouTube API keys
 
 # Load API keys
 with open(API_KEYS_FILE, 'r') as file:
