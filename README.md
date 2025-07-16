@@ -18,7 +18,7 @@ All data is stored in a structured **SQLite database**, which is available via [
 Scripts related to dataset relevance filtering:
 
 - `gpt_classifier_for_training_data.py`: Uses GPT-4o to label a training set of videos as relevant or irrelevant to data systems education.
-- `embedding_gte-Qwen2-7B-instruct.ipynb` ([Colab Link](https://colab.research.google.com/drive/1KoGi1imRf9sWOe_OrlZ9uZVQ_kWNC1wC?usp=sharing)): Encodes structured text (title, description, transcript keywords) for each video using the instruction-tuned embedding model `gte-Qwen2-7B-instruct`.
+- `embedding_gte-Qwen2-7B-instruct.ipynb` ([Colab Link](https://colab.research.google.com/drive/1KoGi1imRf9sWOe_OrlZ9uZVQ_kWNC1wC?usp=sharing)): Encodes structured text (title, description, transcript keywords) for each video using the selected instruction-tuned embedding model `gte-Qwen2-7B-instruct`.
 - `classification_gte-Qwen2-7B-instruct.ipynb`: Trains and evaluates classifiers (e.g., XGBoost) using the generated embeddings and both GPT-labeled and manually annotated relevance labels, then predicts relevance for the rest of the dataset.
 
 ### `sql_subtopics_classification/`
