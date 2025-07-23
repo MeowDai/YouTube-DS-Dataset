@@ -4,6 +4,12 @@ This repository contains the core scripts and data used in the MSc thesis projec
 
 ## Repository Overview
 
+### Notebooks
+
+- `data_descriptive_analysis.ipynb`: Provides a statistical overview of the dataset.
+- `engagement_modeling.ipynb`: Investigates relationships between video engagement metrics and explanatory features.
+- `sql_subtopic_coverage.ipynb`: Analyzes the distribution of SQL subtopics across relevant videos and visualizes coverage patterns based on LLM-classified topics.
+
 ### `scrapers/`
 This folder includes all scripts for collecting data from YouTube using the YouTube Data API:
 
@@ -20,6 +26,15 @@ Scripts related to dataset relevance filtering:
 - `gpt_classifier_for_training_data.py`: Uses GPT-4o to label a training set of videos as relevant or irrelevant to data systems education.
 - `embedding_gte-Qwen2-7B-instruct.ipynb` ([Colab Link](https://colab.research.google.com/drive/1KoGi1imRf9sWOe_OrlZ9uZVQ_kWNC1wC?usp=sharing)): Encodes structured text (title, description, transcript keywords) for each video using the selected instruction-tuned embedding model `gte-Qwen2-7B-instruct`.
 - `classification_gte-Qwen2-7B-instruct.ipynb`: Trains and evaluates classifiers (e.g., XGBoost) using the generated embeddings and both GPT-labeled and manually annotated relevance labels, then predicts relevance for the rest of the dataset.
+#### `filtering/embeddings_gte-Qwen2-7B-instruct/`
+This folder contains the preprocessed embeddings and model artifacts generated using the `gte-Qwen2-7B-instruct` embedding model, used for classifying the relevance of YouTube videos to data systems education. It includes:
+
+- `X_train.npy`, `X_val.npy`, `X_test.npy`: Feature arrays containing the video embeddings for the training, validation, and test splits.
+- `y_train.npy`, `y_val.npy`, `y_test.npy`: Corresponding relevance labels (e.g., relevant or irrelevant).
+- `best_model.pkl`: The trained classifier (e.g., XGBoost) that achieved the best validation performance.
+- `scaler.pkl`: A fitted scaler object used to normalize the input features.
+- `train_ids.txt`, `val_ids.txt`, `test_ids.txt`: Video IDs corresponding to each data split.
+- `video_id_mapping.txt`: A mapping file linking embedding indices to original video metadata (useful for interpretation and traceability).
 
 ### `sql_subtopics_classification/`
 Resources and outputs for textbook-based SQL subtopic classification:
