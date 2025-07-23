@@ -4,7 +4,7 @@ This repository contains the core scripts and data used in the MSc thesis projec
 
 ## Repository Overview
 
-### Notebooks
+### `Notebooks/`
 
 - `data_descriptive_analysis.ipynb`: Provides a statistical overview of the dataset.
 - `engagement_modeling.ipynb`: Investigates relationships between video engagement metrics and explanatory features.
